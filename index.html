@@ -30,7 +30,6 @@
             eye.setAttribute('src', '#eyeTexture');
             eye.setAttribute('scale', data.eyeScale);
             eye.setAttribute('material', {
-              color: '#ffffff',
               emissive: '#ffffff',
               emissiveIntensity: 0.5,
               shader: 'flat'
@@ -45,17 +44,21 @@
             pos.normalize();
             
             // Adjust position to account for box scale
-            pos.x *= boxScale.x / 4.7;
-            pos.y *= boxScale.y / 4.7;
-            pos.z *= boxScale.z / 4.7;
+            pos.x *= boxScale.x / 4.8;
+            pos.y *= boxScale.y / 4.8;
+            pos.z *= boxScale.z / 4.8;
 
-            // Slightly outside the box to prevent z-fighting
             pos.multiplyScalar(1.01);
 
             eye.setAttribute('position', pos);
 
-            // Rotate the eye to face outward
-            eye.setAttribute('look-at', '3 6 9');
+            
+            var randomLookAt = new THREE.Vector3(
+                (Math.random() - 0.5) * 20,
+                (Math.random() - 0.5) * 20,
+                (Math.random() - 0.5) * 20
+                );
+            eye.setAttribute('look-at', randomLookAt);
 
             el.appendChild(eye);
           }
@@ -67,7 +70,7 @@
 
         <img id="fleshTexture" src="flesh.jpg">
         <img id="skytexture" src="skulls.PNG">
-        <img id="eyeTexture" src="eye.jpg">
+        <img id="eyeTexture" src="eye2.jpg">
       </a-assets>
 
       <a-text
