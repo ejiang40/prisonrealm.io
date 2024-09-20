@@ -29,12 +29,12 @@
             var eye = document.createElement('a-sphere');
             eye.setAttribute('src', '#eyeTexture');
             eye.setAttribute('scale', data.eyeScale);
-            eye.setAttribute(
+            eye.setAttribute('material', {
               color: '#ffffff',
               emissive: '#ffffff',
               emissiveIntensity: 0.5,
-              shader: 'flat');
-
+              shader: 'flat'
+            });
             // Random position on the surface of the box
             var side = Math.floor(Math.random() * 6);
             var pos = new THREE.Vector3(
