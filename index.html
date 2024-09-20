@@ -13,6 +13,42 @@
           id="groundTexture"
           src="https://cdn.aframe.io/a-painter/images/floor.jpg"
         />
+        
+        <script>
+          AFRAME.registerComponent('random-eyes', {
+            schema: {
+              numberOfEyes: {type: 'number', default: 10},
+              eyeScale: {type: 'vec3', default: {x: 0.3, y: 0.3, z: 0.3}}
+            },
+            init: function () {
+                var data = this.data;
+                var el = this.el;
+
+              for (var i = 0; i < data.numberOfEyes; i++) {
+              var eye = document.createElement('a-sphere');
+              eye.setAttribute('src', '#eyeTexture');
+              eye.setAttribute('scale', data.eyeScale);
+
+            // Random position on the surface of the box
+                var side = Math.floor(Math.random() * 6);
+                var pos = new THREE.Vector3(
+                  (Math.random() - 0.5) * 2,
+                  (Math.random() - 0.5) * 2,
+                  (Math.random() - 0.5) * 2
+                );
+                pos.normalize().multiplyScalar(1.01); // Slightly outside the box to prevent z-fighting
+
+                eye.setAttribute('position', pos);
+
+            // Rotate the eye to face outward
+                eye.setAttribute('look-at', '0 0 0');
+
+                el.appendChild(eye);
+              }
+            }
+          });
+      </script>
+
 
         <img id="fleshTexture" src="flesh.jpg">
         <img id="skytexture" src="skulls.PNG">
@@ -37,18 +73,9 @@
         position= "0 3 -5"
         rotation= "20 90 30"
         scale= "3 3 3"
+        random-eyes="numberOfEyes: 15; eyeScale: 0.2 0.2 0.2"
       >
       </a-box>
-
-
-      
-      <a-sphere
-        src = "#eyeTexture"
-        position = "0 2 -6"
-        rotation = "20 90 30"
-        scale = "0.3 0.3 0.3"
-      >
-      </a-sphere>
       
 
 
