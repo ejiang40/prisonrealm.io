@@ -45,9 +45,9 @@
             pos.normalize();
             
             // Adjust position to account for box scale
-            pos.x *= boxScale.x / 4.5;
-            pos.y *= boxScale.y / 4.5;
-            pos.z *= boxScale.z / 4.5;
+            pos.x *= boxScale.x / 4.7;
+            pos.y *= boxScale.y / 4.7;
+            pos.z *= boxScale.z / 4.7;
 
             // Slightly outside the box to prevent z-fighting
             pos.multiplyScalar(1.01);
@@ -90,7 +90,7 @@
         position= "0 3 -5"
         rotation= "20 90 30"
         scale= "3 3 3"
-        random-eyes="numberOfEyes: 35; eyeScale: 0.10 0.10 0.1"
+        random-eyes="numberOfEyes: 20; eyeScale: 0.07 0.07 0.07"
         erratic-shake
       >
       </a-box>
