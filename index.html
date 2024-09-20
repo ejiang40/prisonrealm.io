@@ -32,7 +32,7 @@
             var eye = document.createElement('a-sphere');
             eye.setAttribute('src', '#eyeTexture');
             eye.setAttribute('scale', data.eyeScale);
-            eye.setAttribute('material', 'color: #ffffff; opacity: 0.9'); // White tint
+            eye.setAttribute('color: #ffffff;'); // White tint
 
             // Random position on the surface of the box
             var side = Math.floor(Math.random() * 6);
@@ -44,9 +44,9 @@
             pos.normalize();
             
             // Adjust position to account for box scale
-            pos.x *= boxScale.x / 3;
-            pos.y *= boxScale.y / 3;
-            pos.z *= boxScale.z / 3;
+            pos.x *= boxScale.x / 4;
+            pos.y *= boxScale.y / 4;
+            pos.z *= boxScale.z / 4;
 
             // Slightly outside the box to prevent z-fighting
             pos.multiplyScalar(1.01);
@@ -87,7 +87,7 @@
         position= "0 3 -5"
         rotation= "20 90 30"
         scale= "3 3 3"
-        random-eyes="numberOfEyes: 50; eyeScale: 0.05 0.05 0.05"
+        random-eyes="numberOfEyes: 20; eyeScale: 0.05 0.05 0.05"
       >
       </a-box>
       
