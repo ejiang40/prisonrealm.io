@@ -41,9 +41,9 @@
             pos.normalize();
             
             // Adjust position to account for box scale
-            pos.x *= boxScale.x / 3.5;
-            pos.y *= boxScale.y / 3.5;
-            pos.z *= boxScale.z / 3.5;
+            pos.x *= boxScale.x / 4;
+            pos.y *= boxScale.y / 4;
+            pos.z *= boxScale.z / 4;
 
             // Slightly outside the box to prevent z-fighting
             pos.multiplyScalar(1.01);
@@ -51,7 +51,7 @@
             eye.setAttribute('position', pos);
 
             // Rotate the eye to face outward
-            eye.setAttribute('look-at', 'Math.random() Math.random() Math.random()');
+            eye.setAttribute('look-at', '3 6 9');
 
             el.appendChild(eye);
           }
@@ -85,7 +85,7 @@
         position= "0 3 -5"
         rotation= "20 90 30"
         scale= "3 3 3"
-        random-eyes="numberOfEyes: 20; eyeScale: 0.05 0.05 0.05"
+        random-eyes="numberOfEyes: 30; eyeScale: 0.05 0.05 0.05"
       >
       </a-box>
       
