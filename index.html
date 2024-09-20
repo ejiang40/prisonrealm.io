@@ -17,39 +17,49 @@
           src="https://cdn.aframe.io/a-painter/images/floor.jpg"
         />
         
-        <script>
-          AFRAME.registerComponent('random-eyes', {
-            schema: {
-              numberOfEyes: {type: 'number', default: 10},
-              eyeScale: {type: 'vec3', default: {x: 0.3, y: 0.3, z: 0.3}}
-            },
-            init: function () {
-                var data = this.data;
-                var el = this.el;
+    <script>
+      AFRAME.registerComponent('random-eyes', {
+        schema: {
+          numberOfEyes: {type: 'number', default: 100},
+          eyeScale: {type: 'vec3', default: {x: 0.05, y: 0.05, z: 0.05}}
+        },
+        init: function () {
+          var data = this.data;
+          var el = this.el;
+          var boxScale = el.getAttribute('scale');
 
-              for (var i = 0; i < data.numberOfEyes; i++) {
-              var eye = document.createElement('a-sphere');
-              eye.setAttribute('src', '#eyeTexture');
-              eye.setAttribute('scale', data.eyeScale);
+          for (var i = 0; i < data.numberOfEyes; i++) {
+            var eye = document.createElement('a-sphere');
+            eye.setAttribute('src', '#eyeTexture');
+            eye.setAttribute('scale', data.eyeScale);
+            eye.setAttribute('material', 'color: #ffffff; opacity: 0.9'); // White tint
 
             // Random position on the surface of the box
-                var side = Math.floor(Math.random() * 6);
-                var pos = new THREE.Vector3(
-                  (Math.random() - 0.5) * 2,
-                  (Math.random() - 0.5) * 2,
-                  (Math.random() - 0.5) * 2
-                );
-                pos.normalize().multiplyScalar(1.01); // Slightly outside the box to prevent z-fighting
+            var side = Math.floor(Math.random() * 6);
+            var pos = new THREE.Vector3(
+              (Math.random() - 0.5) * 2,
+              (Math.random() - 0.5) * 2,
+              (Math.random() - 0.5) * 2
+            );
+            pos.normalize();
+            
+            // Adjust position to account for box scale
+            pos.x *= boxScale.x / 2;
+            pos.y *= boxScale.y / 2;
+            pos.z *= boxScale.z / 2;
 
-                eye.setAttribute('position', pos);
+            // Slightly outside the box to prevent z-fighting
+            pos.multiplyScalar(1.01);
+
+            eye.setAttribute('position', pos);
 
             // Rotate the eye to face outward
-                eye.setAttribute('look-at', '0 0 0');
+            eye.setAttribute('look-at', '0 0 0');
 
-                el.appendChild(eye);
-              }
-            }
-          });
+            el.appendChild(eye);
+          }
+        }
+      });
       </script>
 
 
@@ -77,7 +87,7 @@
         position= "0 3 -5"
         rotation= "20 90 30"
         scale= "3 3 3"
-        random-eyes="numberOfEyes: 15; eyeScale: 0.2 0.2 0.2"
+        random-eyes="numberOfEyes: 50; eyeScale: 0.05 0.05 0.05"
       >
       </a-box>
       
