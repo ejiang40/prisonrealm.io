@@ -94,6 +94,44 @@
       >
       </a-box>
       
+      <script>
+  AFRAME.registerComponent('erratic-shake', {
+    tick: function (time, timeDelta) {
+      var el = this.el;
+      var currentPosition = el.getAttribute('position');
+      var currentRotation = el.getAttribute('rotation');
+      
+      // Random position offset
+      var posOffset = {
+        x: (Math.random() - 0.5) * 0.04,
+        y: (Math.random() - 0.5) * 0.04,
+        z: (Math.random() - 0.5) * 0.04
+      };
+      
+      // Random rotation offset
+      var rotOffset = {
+        x: (Math.random() - 0.5) * 0.5,
+        y: (Math.random() - 0.5) * 0.5,
+        z: (Math.random() - 0.5) * 0.5
+      };
+      
+      // Apply offsets
+      el.setAttribute('position', {
+        x: currentPosition.x + posOffset.x,
+        y: currentPosition.y + posOffset.y,
+        z: currentPosition.z + posOffset.z
+      });
+      
+      el.setAttribute('rotation', {
+        x: currentRotation.x + rotOffset.x,
+        y: currentRotation.y + rotOffset.y,
+        z: currentRotation.z + rotOffset.z
+      });
+    }
+  });
+</script>
+
+      
 
 
       <a-entity laser-controls="hand: left"></a-entity>
