@@ -13,6 +13,8 @@
           id="groundTexture"
           src="https://cdn.aframe.io/a-painter/images/floor.jpg"
         />
+
+        <img id="fleshTexture" src="flesh.jpg">
         <img id="skytexture" src="skulls.PNG">
       </a-assets>
 
@@ -29,10 +31,10 @@
       ></a-text>
 
       <a-box
-        src = "flesh.jpg"
-        position="0 2 -5"
-        rotation="20 90 30"
-        scale="1.5 1.5 1.5"
+        src = "#fleshTexture"
+        position= "0 2 -5"
+        rotation= "20 90 30"
+        scale= "1.5 1.5 1.5"
         event-set__enter="_event: mouseenter; _target: #bg; color: #F44336"
       >
       </a-box>
