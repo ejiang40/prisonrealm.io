@@ -13,6 +13,7 @@
           id="groundTexture"
           src="https://cdn.aframe.io/a-painter/images/floor.jpg"
         />
+        <img id="skytexture" src="skulls.PNG">
       </a-assets>
 
       <a-text
@@ -41,6 +42,7 @@
       <a-entity laser-controls="hand: right"></a-entity>
 
       <a-sky id="bg" color="#fff"></a-sky>
+      <a-sky src="#skytexture"></a-sky>
 
       <a-plane
         src="#groundTexture"
