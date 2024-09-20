@@ -44,9 +44,9 @@
             pos.normalize();
             
             // Adjust position to account for box scale
-            pos.x *= boxScale.x / 2;
-            pos.y *= boxScale.y / 2;
-            pos.z *= boxScale.z / 2;
+            pos.x *= boxScale.x / 3;
+            pos.y *= boxScale.y / 3;
+            pos.z *= boxScale.z / 3;
 
             // Slightly outside the box to prevent z-fighting
             pos.multiplyScalar(1.01);
@@ -54,7 +54,7 @@
             eye.setAttribute('position', pos);
 
             // Rotate the eye to face outward
-            eye.setAttribute('look-at', '0 0 0');
+            eye.setAttribute('look-at', 'Math.random() Math.random() Math.random()');
 
             el.appendChild(eye);
           }
