@@ -45,9 +45,9 @@
             pos.normalize();
             
             // Adjust position to account for box scale
-            pos.x *= boxScale.x / 4;
-            pos.y *= boxScale.y / 4;
-            pos.z *= boxScale.z / 4;
+            pos.x *= boxScale.x / 4.3;
+            pos.y *= boxScale.y / 4.3;
+            pos.z *= boxScale.z / 4.3;
 
             // Slightly outside the box to prevent z-fighting
             pos.multiplyScalar(1.01);
