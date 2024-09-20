@@ -29,7 +29,11 @@
             var eye = document.createElement('a-sphere');
             eye.setAttribute('src', '#eyeTexture');
             eye.setAttribute('scale', data.eyeScale);
-            eye.setAttribute('material', 'color: #ffffff; opacity: 1'); // White tint
+            eye.setAttribute(
+              color: '#ffffff',
+              emissive: '#ffffff',
+              emissiveIntensity: 0.5,
+              shader: 'flat');
 
             // Random position on the surface of the box
             var side = Math.floor(Math.random() * 6);
@@ -75,7 +79,7 @@
       ></a-text>
       <a-text
         value="...helpless to stop the madness in Shibuya."
-        position="-1.5 5.5 -5"
+        position="-1.5 6.5 -5"
         color="#9c4848"
       ></a-text>
 
